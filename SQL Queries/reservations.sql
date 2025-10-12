@@ -1,0 +1,2 @@
+SELECT reservation_id
+FROM reservations
