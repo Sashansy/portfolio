@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "a3b14286-9f45-4c74-84ac-c5ae010f13a8",
+		"_postman_id": "837addfd-73e5-446d-b1c0-8a06d34d88bd",
 		"name": "Products API",
+		"description": "Небольшое приложение, предоставляющее API для работы с товарами. Это API предоставляет методы для получения товара, его создания, редактирования, удаления, а также получение списка товаров\n\n{baseUrl} - [https://web-postman-shop-exericse-9766037.evaluator1-3.hexlet.io](https://web-postman-shop-exericse-9766037.evaluator1-3.hexlet.io)\n\n{id} - идентификатор товара\n\n/products - товары\n\nКаждый объект представляет отдельный товар с полями:  \n\\- id (integer): Идентификатор товара  \n\\- name (string): Название товара  \n\\- price (number): Цена товара",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "47778200-a3b14286-9f45-4c74-84ac-c5ae010f13a8"
+		"_uid": "47778200-837addfd-73e5-446d-b1c0-8a06d34d88bd"
 	},
 	"item": [
 		{
@@ -17,7 +18,7 @@
 							"item": [
 								{
 									"name": "Получить товар по ID",
-									"id": "fff2dd16-ec4c-45cd-a83b-3379112af1e0",
+									"id": "ab1abb55-a283-4ac7-82f6-ef47c034f17b",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -42,14 +43,16 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "4"
+													"value": "4",
+													"description": "Задает идентификатор товара"
 												}
 											]
-										}
+										},
+										"description": "Извлекает подробную информацию о конкретном продукте, используя его уникальный идентификатор.\n\n**Status Code**  \n\\- \"200 OK\": Товар найден и возвращен успешно.  \n\\- \"404 Not Found\": Товара с указанным идентификатором не существует."
 									},
 									"response": [
 										{
-											"id": "99fc1e46-ad70-40de-a4ae-98c046ec4876",
+											"id": "809e912e-6a30-453c-8053-e68c59ecdb22",
 											"name": "Успешный ответ",
 											"originalRequest": {
 												"method": "GET",
@@ -60,10 +63,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/products/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
+													"raw": "/api/products/:id",
 													"path": [
 														"api",
 														"products",
@@ -71,7 +71,9 @@
 													],
 													"variable": [
 														{
-															"key": "id"
+															"key": "id",
+															"value": "",
+															"description": "Существующий идентификатор"
 														}
 													]
 												}
@@ -87,19 +89,16 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"id\": 2677,\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}"
+											"body": "{\n  \"id\": 4,\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}"
 										},
 										{
-											"id": "06e57918-5f11-4c25-ba9b-57f57335c62c",
+											"id": "9f067152-b232-49ce-9a48-bd1cf7de125a",
 											"name": "Товар не найден",
 											"originalRequest": {
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/api/products/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
+													"raw": "/api/products/:id",
 													"path": [
 														"api",
 														"products",
@@ -107,23 +106,33 @@
 													],
 													"variable": [
 														{
-															"key": "id"
+															"key": "id",
+															"description": "Несуществующий идентификатор"
 														}
 													]
 												}
 											},
 											"status": "Not Found",
 											"code": 404,
-											"_postman_previewlanguage": "text",
-											"header": [],
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"name": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text",
+													"uuid": "902ec7e5-6e4f-4cb5-94a8-65c1fc938c67"
+												}
+											],
 											"cookie": [],
-											"body": null
+											"body": "{\n    \"message\": \"Товар не найден\"\n}"
 										}
 									]
 								},
 								{
 									"name": "Редактирование товара",
-									"id": "dbfea7b8-ff60-4208-ad82-adb991b72954",
+									"id": "04a7a056-31b3-4a54-b116-1d449a5d34e7",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -141,7 +150,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"Товар\",\n  \"price\": 50\n}",
+											"raw": "{\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -162,14 +171,16 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "1"
+													"value": "3",
+													"description": "Задает идентификатор товара"
 												}
 											]
-										}
+										},
+										"description": "Обновляет существующий товар по его уникальному идентификатору.\n\n**Status Code**  \n\\- \"200 OK\": Товар успешно обновлен. Возвращает обновленный объект товара.  \n\\- \"404 Not Found\": Товар с указанным идентификатором не существует."
 									},
 									"response": [
 										{
-											"id": "3bb65290-1396-407f-aca3-c40961638053",
+											"id": "f4da568f-3651-46eb-b8a0-daa60a5e0cc2",
 											"name": "Товар обновлен",
 											"originalRequest": {
 												"method": "PUT",
@@ -185,7 +196,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"string\",\n  \"price\": 1775.5517882306892\n}",
+													"raw": "{\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -194,10 +205,7 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/api/products/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
+													"raw": "/api/products/:id",
 													"path": [
 														"api",
 														"products",
@@ -205,7 +213,9 @@
 													],
 													"variable": [
 														{
-															"key": "id"
+															"key": "id",
+															"value": "",
+															"description": "Существующий идентификатор"
 														}
 													]
 												}
@@ -221,10 +231,10 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"id\": 2677,\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}"
+											"body": "{\n  \"id\": 3,\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}"
 										},
 										{
-											"id": "d3756d93-8b6a-412e-97c8-cc7c0239e78e",
+											"id": "5e5e3712-79ea-4626-b2d2-515b7c5522a7",
 											"name": "Товар не найден",
 											"originalRequest": {
 												"method": "PUT",
@@ -236,7 +246,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"string\",\n  \"price\": 1775.5517882306892\n}",
+													"raw": "{\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -245,10 +255,7 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/api/products/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
+													"raw": "/api/products/:id",
 													"path": [
 														"api",
 														"products",
@@ -256,23 +263,34 @@
 													],
 													"variable": [
 														{
-															"key": "id"
+															"key": "id",
+															"value": "",
+															"description": "Несуществующий идентификатор"
 														}
 													]
 												}
 											},
 											"status": "Not Found",
 											"code": 404,
-											"_postman_previewlanguage": "text",
-											"header": [],
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"name": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text",
+													"uuid": "5d9e6750-0ae3-4590-ac58-6b1ee71c0b27"
+												}
+											],
 											"cookie": [],
-											"body": null
+											"body": "{\n    \"message\": \"Товар не найден\"\n}"
 										}
 									]
 								},
 								{
 									"name": "Удаление товара",
-									"id": "d581e0a9-92df-4d8d-a42d-ca257516b917",
+									"id": "5f7729a6-0b51-42b9-b64f-d00c1e96345f",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -292,23 +310,21 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "4"
+													"value": "1"
 												}
 											]
-										}
+										},
+										"description": "Удаляет продукт по его уникальному идентификатору.\n\n**Status Code**\n\n\\- \"204 No Content\": Успешное удаление указанного продукта  \n\\- \"404 Not Found\": Товара с указаным идентификатором не существует"
 									},
 									"response": [
 										{
-											"id": "96518936-2709-4fc9-b702-57b342501a1b",
+											"id": "f74be1ff-011d-4802-8ff1-35528e26e08d",
 											"name": "Товар успешно удален",
 											"originalRequest": {
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/api/products/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
+													"raw": "/api/products/:id",
 													"path": [
 														"api",
 														"products",
@@ -316,7 +332,8 @@
 													],
 													"variable": [
 														{
-															"key": "id"
+															"key": "id",
+															"description": "Существующий идентификатор"
 														}
 													]
 												}
@@ -329,16 +346,13 @@
 											"body": null
 										},
 										{
-											"id": "695c8431-9189-4f1d-8570-96d05d1b03c6",
+											"id": "cb2481e0-1f92-4409-a2f5-c81618c2dcc9",
 											"name": "Товар не найден",
 											"originalRequest": {
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/api/products/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
+													"raw": "/api/products/:id",
 													"path": [
 														"api",
 														"products",
@@ -346,28 +360,39 @@
 													],
 													"variable": [
 														{
-															"key": "id"
+															"key": "id",
+															"description": "Несуществующий идентификатор"
 														}
 													]
 												}
 											},
 											"status": "Not Found",
 											"code": 404,
-											"_postman_previewlanguage": "text",
-											"header": [],
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"name": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text",
+													"uuid": "f26241de-a03b-4c81-84f6-08c65fe6b84f"
+												}
+											],
 											"cookie": [],
-											"body": null
+											"body": "{\n    \"message\": \"Товар не найден\"\n}"
 										}
 									]
 								}
 							],
-							"id": "74dc6cbc-6265-4abc-91c7-ed56787ab9f2"
+							"id": "c862a387-a7ce-44a8-a3fa-058471055479"
 						},
 						{
 							"name": "Получить все товары",
-							"id": "9d1574e8-317f-4fdd-a066-17fcb9364a3b",
+							"id": "f6eabdd8-228a-4d34-a477-ad0fca7bee22",
 							"protocolProfileBehavior": {
-								"disableBodyPruning": true
+								"disableBodyPruning": true,
+								"protocolVersion": "http2"
 							},
 							"request": {
 								"method": "GET",
@@ -386,11 +411,12 @@
 										"api",
 										"products"
 									]
-								}
+								},
+								"description": "Этот запрос предназначен для получения списка всех товаров, доступных в системе.\n\n**Status Code**  \n\\- \"200 OK\": Товары найдены и возвращены успешно."
 							},
 							"response": [
 								{
-									"id": "9085770a-a0ea-4518-ac10-4754a932c7df",
+									"id": "79afd39e-2f3e-4253-bcd0-e13f84442cb8",
 									"name": "Успешный ответ",
 									"originalRequest": {
 										"method": "GET",
@@ -401,10 +427,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/products",
-											"host": [
-												"{{baseUrl}}"
-											],
+											"raw": "/api/products",
 											"path": [
 												"api",
 												"products"
@@ -428,7 +451,7 @@
 						},
 						{
 							"name": "Добавить новый товар",
-							"id": "72ae9d5d-a8db-4052-a945-366b27560f0d",
+							"id": "5aa3b1a9-f0ca-4ac6-bebb-32a51358944c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -446,7 +469,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"string\",\n  \"price\": \n}",
+									"raw": "{\n  \"name\": \"string\",\n  \"price\": 200\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -463,11 +486,12 @@
 										"api",
 										"products"
 									]
-								}
+								},
+								"description": "Этот запрос позволяет добавить новый товар в систему.\n\n**Status Code**  \n\\- \"201 OK\": Товар успешно создан в системе.  \n\\- \"400 Bed Request\": Неправильный формат тела в запросе"
 							},
 							"response": [
 								{
-									"id": "97a8c7db-10ea-46dd-991c-65b0d47f497c",
+									"id": "8b2d4b05-474d-479a-a2b3-73e4d973d8b5",
 									"name": "Товар создан",
 									"originalRequest": {
 										"method": "POST",
@@ -492,10 +516,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/products",
-											"host": [
-												"{{baseUrl}}"
-											],
+											"raw": "/api/products",
 											"path": [
 												"api",
 												"products"
@@ -513,10 +534,10 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"id\": 2677,\n  \"name\": \"string\",\n  \"price\": 934.3843589386936\n}"
+									"body": "{\n  \"id\": 267,\n  \"name\": \"string\",\n  \"price\": 1775.5517882306892\n}"
 								},
 								{
-									"id": "faefab94-b398-441e-b32f-11ce40c642f2",
+									"id": "89cb3b10-6c24-4957-a724-78e58861547a",
 									"name": "Неправильный запрос",
 									"originalRequest": {
 										"method": "POST",
@@ -528,7 +549,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"string\",\n  \"price\": 1775.5517882306892\n}",
+											"raw": "{\n    \"name\": \"string\",\n    \"price\": \n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -537,10 +558,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/products",
-											"host": [
-												"{{baseUrl}}"
-											],
+											"raw": "/api/products",
 											"path": [
 												"api",
 												"products"
@@ -549,25 +567,34 @@
 									},
 									"status": "Bad Request",
 									"code": 400,
-									"_postman_previewlanguage": "text",
-									"header": [],
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"name": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text",
+											"uuid": "eb4781a1-4c51-4adb-b7e3-0b3e9aba360d"
+										}
+									],
 									"cookie": [],
-									"body": null
+									"body": "{\n    \"statusCode\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"...\"\n}"
 								}
 							]
 						}
 					],
-					"id": "d62401de-93f2-4694-8e9b-db0dea923718"
+					"id": "cb56658c-0977-40c4-8649-496395b9bc0f"
 				}
 			],
-			"id": "dec901de-a97d-4ffc-ad47-55915e18b284"
+			"id": "a2075eea-f03f-4852-b8bc-e75d8034a6ea"
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "0fab15ca-809a-472a-a6ca-2ac9a8d8be98",
+				"id": "cbd858f0-6233-4d1f-a61e-f4d9ead962cb",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -579,7 +606,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "9f3b1613-f579-4274-b231-0728758eb898",
+				"id": "4cfd87a1-ab20-4ac8-a844-c70464262c6b",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -591,7 +618,7 @@
 	],
 	"variable": [
 		{
-			"id": "2985820e-40b4-44c2-a5a2-0ae3f1304943",
+			"id": "2515efac-a6cb-4c9d-a0bf-ac2e9d0ff7b4",
 			"key": "baseUrl",
 			"value": "/"
 		}
