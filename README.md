@@ -20,4 +20,11 @@
          <li>Что показано: Функциональное тестирование, проработка позитивных и негативных сценариев.</li>
       </ul>
    </li>
+
+   <li>postman/collection:
+      <ul>
+         <li>Описание: Коллекция для тестирования учебного API интернет-магазина от Hexlet. Позволяет выполнять CRUD-операции с товарами. Баг-репорт оформлен в Google Таблице (https://docs.google.com/spreadsheets/d/1cDgOaeaU6_FF1MaplyctiSnJwewj1mxAtPmzwZraHDE/edit?usp=sharing)</li>
+         <li>Что показано: Структура запросов к API (GET, POST, PUT, DELETE). Примеры корректных и ошибочных запросов. Документирование API в Description и Examples</li>
+      </ul>
+   </li>
 </ol>
